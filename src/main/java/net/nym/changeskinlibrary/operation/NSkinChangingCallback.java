@@ -11,33 +11,40 @@
 
 package net.nym.changeskinlibrary.operation;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-
 /**
  * @author niyueming
  * @date 2017-03-14
- * @time 14:55
+ * @time 15:52
  */
 
-public interface NSkinManager<M> {
+public interface NSkinChangingCallback {
 
-    M getManager();
+    void onStart();
 
-    void switchSkinMode(NOnSkinChangeListener listener);
+    void onError(Exception e);
 
-    void refreshSkin(NOnSkinChangeListener listener);
+    void onComplete();
 
-    /**
-     *  在需要换肤的{@link Activity#onCreate(Bundle)}中注册
-     * @param context
-     */
-    void register(Context context);
+    public static SimpleSkinChangingCallback DEFAULT_SKIN_CHANGING_CALLBACK = new SimpleSkinChangingCallback();
 
-    /**
-     * 在{@link Activity#onDestroy()}中注销
-     * @param context
-     */
-    void unregister(Context context);
+    public class SimpleSkinChangingCallback implements NSkinChangingCallback
+    {
+        @Override
+        public void onStart()
+        {
+
+        }
+
+        @Override
+        public void onError(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        @Override
+        public void onComplete()
+        {
+
+        }
+    }
 }

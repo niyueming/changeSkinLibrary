@@ -11,6 +11,10 @@
 
 package net.nym.changeskinlibrary;
 
+import android.content.res.AssetManager;
+
+import java.lang.reflect.Method;
+
 /**
  * @author niyueming
  * @date 2017-03-14
@@ -18,4 +22,13 @@ package net.nym.changeskinlibrary;
  */
 
 public class Utils {
+
+    private void addAssetPath(String skinPath) throws Exception
+    {
+        AssetManager assetManager = AssetManager.class.newInstance();
+        Method addAssetPath = assetManager.getClass().getMethod("addAssetPath", String.class);
+        addAssetPath.invoke(assetManager, skinPath);
+
+    }
+
 }

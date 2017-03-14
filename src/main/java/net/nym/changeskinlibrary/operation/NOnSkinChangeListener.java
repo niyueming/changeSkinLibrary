@@ -11,33 +11,13 @@
 
 package net.nym.changeskinlibrary.operation;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-
 /**
  * @author niyueming
  * @date 2017-03-14
- * @time 14:55
+ * @time 15:43
  */
 
-public interface NSkinManager<M> {
+public interface NOnSkinChangeListener {
 
-    M getManager();
-
-    void switchSkinMode(NOnSkinChangeListener listener);
-
-    void refreshSkin(NOnSkinChangeListener listener);
-
-    /**
-     *  在需要换肤的{@link Activity#onCreate(Bundle)}中注册
-     * @param context
-     */
-    void register(Context context);
-
-    /**
-     * 在{@link Activity#onDestroy()}中注销
-     * @param context
-     */
-    void unregister(Context context);
+    void onSkinChanged();
 }
