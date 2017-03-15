@@ -13,6 +13,7 @@ package net.nym.changeskinlibrary;
 
 import android.content.res.AssetManager;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -23,12 +24,14 @@ import java.lang.reflect.Method;
 
 public class Utils {
 
-    private void addAssetPath(String skinPath) throws Exception
-    {
-        AssetManager assetManager = AssetManager.class.newInstance();
-        Method addAssetPath = assetManager.getClass().getMethod("addAssetPath", String.class);
-        addAssetPath.invoke(assetManager, skinPath);
-
+    private void addAssetPath(String skinPath){
+        try {
+            AssetManager assetManager =AssetManager.class.newInstance();
+            Method addAssetPath = assetManager.getClass().getMethod("addAssetPath", String.class);
+            addAssetPath.invoke(assetManager, skinPath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
