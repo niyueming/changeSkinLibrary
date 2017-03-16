@@ -14,6 +14,7 @@ package net.nym.changeskinlibrary.operation;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 
 /**
  * @author niyueming
@@ -29,15 +30,36 @@ public interface NSkinManager<M> {
 
     void refreshSkin(NOnSkinChangeListener listener);
 
+    void changeSkin(String skinPath, String skinPkgName, String suffix,NOnSkinChangeListener listener);
+
+    /**
+     * 更换皮肤后缀
+     * @param suffix 多套皮肤以后缀就行区别，比如：main_bg，皮肤资源可以为：main_bg_red,main_bg_green等。
+     *               换肤时，直接传入后缀，例如上面描述的red,green。
+     * @param listener
+     */
+    void changeSkin(String suffix,NOnSkinChangeListener listener);
+
     /**
      *  在需要换肤的{@link Activity#onCreate(Bundle)}中注册
-     * @param context
      */
-    void register(Context context);
+    void register(Activity activity);
 
     /**
      * 在{@link Activity#onDestroy()}中注销
-     * @param context
      */
-    void unregister(Context context);
+    void unregister(Activity activity);
+
+    /**
+     * 用于动态添加的view自动加当前皮肤
+     * @param view
+     */
+    void injectSkin(View view);
+
+    /**
+     * 恢复默认
+     */
+    void restoreDefault(NOnSkinChangeListener listener);
+
+    void clear();
 }
