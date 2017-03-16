@@ -57,9 +57,12 @@ public interface NSkinManager<M> {
     void injectSkin(View view);
 
     /**
-     * 恢复默认
+     * 恢复默认（还带后缀）
      */
     void restoreDefault(NOnSkinChangeListener listener);
 
+    /**
+     * 恢复默认
+     */
     void clear();
 }
