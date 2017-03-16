@@ -26,6 +26,10 @@ public interface NSkinManager<M> {
 
     M getManager();
 
+    /**
+     * 插件皮肤和应用内皮肤切换
+     * @param listener
+     */
     void switchSkinMode(NOnSkinChangeListener listener);
 
     void refreshSkin(NOnSkinChangeListener listener);
